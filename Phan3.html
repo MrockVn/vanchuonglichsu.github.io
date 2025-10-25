@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lịch Sử Tác Động Đến Văn Chương — Văn Chương</title>
+  <style>
+    :root {
+      --bg: #f8f6ef;
+      --card: #fffdf7;
+      --accent1: #4e2a15;
+      --accent2: #b8864b;
+      --text: #1f120b;
+      --shadow: 0 10px 30px rgba(0,0,0,0.15);
+      --radius: 22px;
+      --maxw: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Cormorant Garamond', serif;
+      background: linear-gradient(180deg, #fffdf7, #f2e7d8);
+      color: var(--text);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+
+    /* Thanh tiến trình */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 5px;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent1), var(--accent2));
+      z-index: 999;
+      border-radius: 0 3px 3px 0;
+      transition: width 0.25s ease-out;
+    }
+
+    header {
+      height: 360px;
+      background: radial-gradient(circle at center, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0.4) 100%), url('https://cdn.tiasang.com.vn/tiasang-media/2024/03/image-14-1096x700.png') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--text);
+      overflow: hidden;
+      box-shadow: inset 0 0 80px rgba(0,0,0,0.4);
+    }
+
+    header .header-box {
+      position: relative;
+      z-index: 2;
+      animation: fadeSlide 2s ease;
+    }
+    header h1 {
+      font-size: 3.5rem;
+      color: var(--accent2);
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-shadow: 0 3px 8px rgba(0,0,0,0.3);
+    }
+    header p {
+      font-size: 1.3rem;
+      color: #fffdf7;
+      margin-top: 10px;
+      animation: fadeInText 3s ease;
+    }
+
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 50px auto;
+      padding: 0 24px;
+    }
+
+    .section {
+      margin-bottom: 60px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 1s ease;
+    }
+    .section.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .section-header {
+      background: linear-gradient(90deg, var(--accent2), #e3c08d);
+      padding: 20px 30px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+    }
+
+    .section-content {
+      padding: 35px;
+      line-height: 1.8;
+      font-size: 1.1rem;
+      color: var(--text);
+    }
+
+    .dual-layout {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+      align-items: flex-start;
+    }
+
+    .dual-layout .text {
+      flex: 2;
+      min-width: 300px;
+    }
+
+    .dual-layout .image {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .dual-layout .image img {
+      width: 100%;
+      border-radius: 14px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .dual-layout .image img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    .quote {
+      background: rgba(184,134,75,0.15);
+      border-left: 5px solid var(--accent2);
+      padding: 18px 25px;
+      font-style: italic;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      margin: 40px 0;
+      color: var(--accent1);
+      text-align: center;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: var(--accent1);
+      text-decoration: none;
+      font-weight: bold;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: var(--accent2);
+      color: var(--text);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #efe2c9;
+      text-align: center;
+      padding: 30px;
+      font-weight: 700;
+      border-top: 3px solid var(--accent1);
+      color: var(--text);
+      letter-spacing: 0.5px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <header>
+    <div class="header-box">
+      <h1><strong>Lịch Sử Tác Động Đến Văn Chương</strong></h1>
+      <p><strong> lịch sử trở thành nguồn mạch kiến tạo nên tâm hồn văn học.</strong></p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="section-header">III. Lịch sử tác động đến văn chương (Vai trò kiến tạo)</div>
+      <div class="section-content">
+        <p><strong>Ngược lại, dòng chảy lịch sử có vai trò kiến tạo và định hình nên diện mạo, xu hướng phát triển của văn chương trong từng thời kỳ.</strong></p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">1. Lịch sử thay đổi Tư tưởng và Chủ đề Cốt lõi</div>
+      <div class="section-content dual-layout">
+        <div class="text">
+          <p><strong>Khủng hoảng Tư tưởng:</strong> Khi xã hội biến động, văn chương buộc phải thích nghi, chuyển từ lãng mạn sang hiện thực, từ sử thi sang cái nhìn cá nhân.</p>
+          <p>Chủ đề Trung tâm:</p>
+          <ul>
+            <li><em>Thời kỳ chiến tranh:</em> Văn học tôn vinh lý tưởng độc lập và tinh thần dân tộc.</li>
+            <li><em>Thời kỳ hòa bình/Đổi mới:</em> Chuyển hướng khai thác nỗi đau hậu chiến, tự do cá nhân và trách nhiệm xã hội.</li>
+          </ul>
+        </div>
+        <div class="image"><img src="https://images.hcmcpv.org.vn/res/news/2021/02/03-02-2021-su-truyen-ba-chu-nghia-marx-lenin-vao-viet-nam-va-su-tat-yeu-ra-doi-cua-dang-cong-san-38B21B06.jpg" alt="Sách cổ Việt Nam"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">2. Lịch sử thúc đẩy sự Chuyển biến về Thể loại và Phong cách</div>
+      <div class="section-content dual-layout">
+        <div class="text">
+          <p><strong>Thể loại Ưu thế:</strong></p>
+          <p>Mỗi giai đoạn lịch sử tạo điều kiện cho một số thể loại văn học phát triển mạnh mẽ:</p>
+          <ul>
+            <li><em>Phong kiến:</em> Phát triển thơ Nôm đường luật, truyện thơ, truyện truyền kỳ để truyền tải tư tưởng Nho giáo và đề cao nhân nghĩa.</li>
+            <li><em>Cách mạng:</em> Tiểu thuyết sử thi, thơ ca đại chúng, phóng sự phát triển mạnh để phản ánh hiện thực rộng lớn và kịp thời.</li>
+            <li><em>Đương đại:</em> Phát triển các thể loại mang tính khám phá nội tâm, tiểu thuyết tâm lý, truyện ngắn đa tuyến để khai thác chiều sâu con người.</li>
+          </ul>
+          <p><strong>Phong cách và Ngôn ngữ:</strong> Sự tiếp xúc với các nền văn hóa do bối cảnh lịch sử (ví dụ: ảnh hưởng của phương Tây trong thời kỳ thuộc địa, sự giao lưu quốc tế sau Đổi mới) đã làm thay đổi đáng kể kỹ thuật viết, ngôn ngữ trần thuật và phong cách nghệ thuật của các nhà văn.</p>
+        </div>
+        <div class="image"><img src="https://img.loigiaihay.com/picture/2021/0921/4_2.jpg" alt="Thư pháp Việt"></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">3. Nhà văn: Nhân chứng và Người Kiến tạo Giá trị</div>
+      <div class="section-content">
+        <p><strong>Nhân chứng Lịch sử:</strong> Nhà văn trải nghiệm trực tiếp các sự kiện lịch sử và ghi lại bằng ngôn ngữ nghệ thuật của mình, mang tính chân thực và cảm xúc cao..</p>
+        <p><strong>Người Kiến tạo Giá trị:</strong> Thông qua tác phẩm, nhà văn không chỉ phản ánh mà còn tham gia vào quá trình lịch sử bằng cách định hình ý thức xã hội, khích lệ tinh thần dân tộc, và đặt ra những câu hỏi đạo đức, triết lý cho thời đại..</p>
+        <div class="quote">“Lịch sử không chỉ tạo ra sự kiện, mà còn tạo ra tiếng nói – tiếng nói ấy vang vọng trong văn chương.”</div>
+        <a href="Index.html" class="back-link">« Quay về trang chủ</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2025 — VĂN CHƯƠNG: DÒNG CHẢY LỊCH SỬ</footer>
+
+  <script>
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    const sections = document.querySelectorAll('.section');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < trigger) sec.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>

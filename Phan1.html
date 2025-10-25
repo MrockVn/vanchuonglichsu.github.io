@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Khái Quát Chung</title>
+  <style>
+    :root {
+      --bg: #f4f2ec;
+      --card: #ffffff;
+      --accent1: #8b4513;
+      --accent2: #a67845;
+      --text: #1a1a1a;
+      --subtle: #333333;
+      --radius: 16px;
+      --shadow: 0 6px 18px rgba(0,0,0,0.15);
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Garamond', serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      animation: fadeInBody 1.5s ease;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      position: relative;
+      height: 320px;
+      background: url('https://wincolaw.com.vn/wp-content/uploads/2020/11/sohuutritue.png') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: var(--text);
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(3px);
+      animation: fadeInHeader 2s ease;
+    }
+    header .title-box {
+      position: relative;
+      z-index: 1;
+      animation: slideInDown 1.8s ease;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      font-weight: 800;
+      color: var(--accent1);
+      text-shadow: 0 2px 6px rgba(255,255,255,0.5);
+      transition: transform 0.3s ease;
+    }
+    header h1:hover {
+      transform: scale(1.03);
+    }
+    header p {
+      font-size: 1.3rem;
+      margin-top: 10px;
+      color: var(--subtle);
+      font-weight: 700;
+      opacity: 0;
+      animation: fadeInUp 2.5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes slideInDown {
+      from { opacity: 0; transform: translateY(-40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInHeader {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 40px auto;
+      padding: 20px;
+    }
+
+    .toc {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 25px;
+      margin-bottom: 35px;
+      transform: scale(0.97);
+      animation: zoomIn 1.5s ease forwards;
+    }
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .toc h2 {
+      font-size: 1.6rem;
+      color: var(--accent1);
+      font-weight: 800;
+      border-bottom: 2px solid var(--accent2);
+      padding-bottom: 8px;
+      margin-top: 0;
+    }
+    .toc ul { list-style-type: square; margin-left: 20px; }
+    .toc li { margin: 8px 0; font-size: 1.1rem; font-weight: 700; }
+    .toc a {
+      color: var(--accent1);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    .toc a:hover {
+      color: var(--accent2);
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      align-items: start;
+    }
+
+    .text-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--subtle);
+      font-weight: 700;
+    }
+
+    .image-box img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      transition: transform 0.5s ease, filter 0.5s ease;
+    }
+    .image-box img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.1);
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      color: var(--accent1);
+      font-weight: 900;
+      text-transform: uppercase;
+      border-left: 5px solid var(--accent2);
+      padding-left: 12px;
+      margin-top: 0;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: var(--accent1);
+      font-weight: 800;
+      margin-top: 20px;
+    }
+
+    ul { margin: 10px 0 10px 25px; }
+    li { margin-bottom: 5px; }
+
+    .quote {
+      background: rgba(139,69,19,0.15);
+      border-left: 4px solid var(--accent1);
+      padding: 16px 22px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 8px;
+      margin: 18px 0;
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(15px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    .quote.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .split-box {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .split-item {
+      background: #f0e6da;
+      border-radius: 10px;
+      padding: 15px;
+      font-weight: 700;
+      text-align: center;
+      box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .split-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      background: var(--accent1);
+      text-decoration: none;
+      font-weight: 900;
+      color: #fff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .back-link:hover {
+      background: var(--accent2);
+      color: #1b1b1b;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #dcd0c0;
+      color: var(--text);
+      font-size: 1rem;
+      margin-top: 50px;
+      font-weight: 800;
+      border-top: 3px solid var(--accent1);
+    }
+    main {
+max-width: var(--maxw);
+margin: 40px auto;
+padding: 20px;
+}
+
+
+.section {
+background: var(--card);
+border-radius: var(--radius);
+box-shadow: var(--shadow);
+padding: 30px;
+margin-bottom: 30px;
+opacity: 0;
+transform: translateY(20px);
+transition: opacity 1s ease, transform 1s ease;
+}
+.section.visible { opacity: 1; transform: translateY(0); }
+
+
+h2 {
+font-size: 1.8rem;
+color: var(--accent1);
+font-weight: 900;
+text-transform: uppercase;
+border-left: 5px solid var(--accent2);
+padding-left: 12px;
+margin-top: 0;
+}
+h3 {
+font-size: 1.4rem;
+color: var(--accent1);
+font-weight: 800;
+margin-top: 20px;
+}
+
+
+.text-content p {
+font-size: 1.1rem;
+line-height: 1.8;
+color: var(--subtle);
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-box">
+      <h1>Khái Quát Chung</h1>
+      <p>Văn chương – tấm gương phản chiếu lịch sử, và lịch sử – nguồn cảm hứng nuôi dưỡng văn chương.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="toc">
+      <h2>Bảng Nội Dung</h2>
+      <ul>
+        <li><a href="#khaiquat">I. Khái quát chung</a></li>
+        <li><a href="#moiquanhe">II. Mối quan hệ giữa Văn chương và Lịch sử</a></li>
+        <li><a href="#tamquantrong">III. Tầm quan trọng</a></li>
+      </ul>
+    </section>
+
+    <section id="khaiquat" class="section">
+      <h2>I. Khái quát chung</h2>
+      <div class="content-grid">
+        <div class="text-content">
+          <h3>1. Định nghĩa</h3>
+          <p><strong>Văn chương (Văn học):</strong> Là loại hình nghệ thuật ngôn từ, phản ánh và diễn giải hiện thực đời sống, tình cảm con người, có chức năng nhận thức, giáo dục và thẩm mỹ.</p>
+          <p><strong>Lịch sử:</strong> Là khoa học nghiên cứu về quá khứ, tái tạo và giải thích biến cố đã diễn ra dựa trên tư liệu xác thực.</p>
+        </div>
+        <div class="image-box">
+          <img src="https://thichvanhoc.com.vn/wp-content/uploads/2020/12/van-chuong.jpg" alt="Sách và chữ viết" height="350"/>
+        </div>
+      </div>
+    </section>
+
+    <section id="moiquanhe" class="section">
+      <h2>II. Mối quan hệ giữa Văn chương và Lịch Sử</h2>
+      <h3>a. Văn chương là tấm gương phản chiếu lịch sử</h3>
+      <div class="content-grid">
+        <div class="text-content">
+          <p>Văn chương bắt nguồn từ hiện thực của thời đại, phản ánh không khí xã hội, số phận con người và tâm tư thời đại.</p>
+          <ul>
+            <li>“Truyện Kiều” của Nguyễn Du là bức tranh xã hội phong kiến thế kỷ XVIII.</li>
+            <li>Văn học hiện thực 1930–1945 phản ánh thân phận người dân và trí thức nghèo.</li>
+            <li>“Nỗi buồn chiến tranh” của Bảo Ninh khắc họa bi kịch con người sau chiến tranh.</li>
+          </ul>
+          <div class="quote">“Thông qua văn chương, lịch sử hiện lên sống động, có hồn và đa chiều hơn bất kỳ cuốn sử nào.”</div>
+        </div>
+        <div class="image-box">
+          <img src="https://www.nxbtre.com.vn/Images/Book/NXBTreStoryFull_03462015_104616.jpg" alt="Truyện Kiều" width="200" height="400"/>
+        </div>
+      </div>
+
+      <h3>b. Lịch sử là nguồn cảm hứng vô tận cho văn chương</h3>
+      <div class="split-box">
+        <div class="split-item">Cung cấp chất liệu và đề tài sáng tác</div>
+        <div class="split-item">Tạo ra các trào lưu và khuynh hướng mới</div>
+        <div class="split-item">Khơi gợi sứ mệnh người cầm bút</div>
+      </div>
+    </section>
+
+    <main>
+<section id="tamquantrong" class="section visible">
+<h2>III. Tầm quan trọng</h2>
+<div class="text-content">
+<h3>1. Tiếp cận Lịch sử – “Lịch sử có Hồn”</h3>
+<p>Văn chương giúp con người cảm nhận lịch sử bằng cảm xúc, không chỉ qua những con số khô khan mà qua nỗi đau, khát vọng và lý tưởng. Nhờ đó, người đọc hiểu được bối cảnh xã hội, nhân vật lịch sử, và cách con người sống trong dòng chảy biến động của thời đại.</p>
+<p>Ví dụ, qua tác phẩm <strong>“Vỡ đất”</strong> hay <strong>“Đất rừng phương Nam”</strong>, người đọc có thể cảm nhận được không khí đấu tranh, niềm tin và ý chí của con người trong giai đoạn kháng chiến.</p>
+
+
+<h3>2. Giải mã Văn chương – “Hiểu Văn để sâu sắc hơn”</h3>
+<p>Văn học và lịch sử là hai tấm gương soi chiếu lẫn nhau. Khi hiểu lịch sử, người đọc có thể nắm bắt sâu sắc ý nghĩa, thông điệp và tâm tư của nhà văn. Ví dụ, hiểu được bối cảnh xã hội phong kiến giúp ta cảm nhận bi kịch của Thúy Kiều không chỉ là cá nhân, mà là hình ảnh của một thời đại mất cân bằng giữa đạo đức và quyền lực.</p>
+
+
+<h3>3. Phát triển Tư duy và Nhân cách</h3>
+<p>Những tác phẩm mang yếu tố lịch sử giúp người đọc nhìn lại chính mình, rút ra bài học đạo đức và tư tưởng nhân văn. Qua hành trình của nhân vật, con người học được lòng dũng cảm, trung nghĩa, nhân hậu và tinh thần dân tộc – nền tảng quan trọng để hình thành nhân cách.</p>
+
+
+<h3>4. Sáng tạo và Phê bình Văn học</h3>
+<p>Hiểu biết về lịch sử không chỉ giúp nhà văn sáng tác thực tế hơn mà còn mở ra cách khai thác mới. Nhiều nhà văn hiện đại đã dùng yếu tố lịch sử để sáng tạo nên những tác phẩm mang tính phản tư, như <strong>“Hồ Quý Ly”</strong> của Nguyễn Xuân Khánh – nơi lịch sử được tái hiện bằng cái nhìn đa chiều.</p>
+<p>Đồng thời, phê bình văn học dựa trên nền tảng lịch sử giúp người đọc đánh giá đúng giá trị tác phẩm trong bối cảnh xã hội của nó, tránh nhìn nhận phiến diện.</p>
+
+
+<h3>5. Bảo tồn Di sản Văn hóa và Truyền thống Dân tộc</h3>
+<p>Văn chương là cầu nối giữa quá khứ và hiện tại. Những tác phẩm chứa yếu tố lịch sử giúp lưu giữ phong tục, tập quán, tiếng nói, và tinh thần dân tộc. Qua thời gian, văn học trở thành một dạng “ký ức tập thể”, bảo tồn những giá trị văn hóa của đất nước.</p>
+<p>Ví dụ, các tác phẩm về triều đại xưa, về khởi nghĩa nông dân hay anh hùng dân tộc không chỉ khơi dậy lòng tự hào mà còn giúp thế hệ trẻ hiểu và trân trọng nguồn cội.</p>
+
+
+<div class="quote">“Văn chương – tấm gương phản chiếu lịch sử và linh hồn của dân tộc.”</div>
+</div>
+
+
+<a href="Index.html" class="back-link">« Quay về trang chủ</a>
+</section>
+</main>
+
+  <footer><strong>© 2025 — VĂN CHƯƠNG: DÒNG CHẢY LỊCH SỬ</strong></footer>
+
+  <script>
+    // Hiệu ứng xuất hiện khi cuộn trang
+    const sections = document.querySelectorAll('.section');
+    const quotes = document.querySelectorAll('.quote');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if(top < trigger) sec.classList.add('visible');
+      });
+      quotes.forEach(q => {
+        const top = q.getBoundingClientRect().top;
+        if(top < trigger) q.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>

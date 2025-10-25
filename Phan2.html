@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Văn Chương Phản Ánh Lịch Sử — Văn Chương</title>
+  <style>
+    :root {
+      --bg: #f9f7f3;
+      --card: #fffaf3;
+      --accent1: #7b4b17;
+      --accent2: #cda46f;
+      --text: #2a1b0f;
+      --shadow: 0 8px 25px rgba(0,0,0,0.1);
+      --radius: 20px;
+      --maxw: 1200px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', serif;
+      background: linear-gradient(180deg, #fffaf3, #f5ebdc);
+      color: var(--text);
+      overflow-x: hidden;
+      animation: fadeInBody 1.5s ease;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Thanh tiến trình khi cuộn */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 6px;
+      background: var(--accent1);
+      z-index: 1000;
+      transition: width 0.25s ease-out;
+    }
+
+    header {
+      height: 340px;
+      background: url('https://image.vovworld.vn/w500/Uploaded/vovworld/znaeng/2013_07_15/1177319793.nv.jpg') center/cover no-repeat;
+      position: relative;
+      text-align: center;
+      color: #3a240f;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(3px);
+    }
+    header .header-content {
+      position: relative;
+      z-index: 2;
+      animation: slideIn 2s ease;
+    }
+    header h1 {
+      font-family: 'Georgia', serif;
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--accent1);
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+    header p {
+      font-size: 1.3rem;
+      color: var(--text);
+      opacity: 0;
+      animation: fadeInUp 2.5s ease forwards;
+      animation-delay: 1s;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .intro {
+      background: var(--card);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 30px;
+      text-align: center;
+      animation: floatUp 2s ease;
+    }
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .timeline {
+      position: relative;
+      margin: 60px 0;
+      padding-left: 40px;
+      border-left: 4px solid var(--accent2);
+    }
+    .timeline::before {
+      content: '⏳';
+      position: absolute;
+      top: -30px;
+      left: -15px;
+      font-size: 2rem;
+      color: var(--accent1);
+    }
+    .event {
+      margin-bottom: 40px;
+      padding-left: 20px;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .event.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .event::before {
+      content: '●';
+      position: absolute;
+      left: -30px;
+      color: var(--accent1);
+      font-size: 1.2rem;
+    }
+    .event h3 {
+      font-size: 1.6rem;
+      color: var(--accent1);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .event p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #3a2c1b;
+    }
+
+    .gallery {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .gallery img {
+      width: 340px;
+      border-radius: 16px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, filter 0.4s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+      filter: brightness(1.15);
+    }
+
+    .quote {
+      background: linear-gradient(90deg, rgba(205,164,111,0.15), rgba(255,255,255,0.6));
+      padding: 20px 25px;
+      border-left: 4px solid var(--accent1);
+      font-style: italic;
+      font-size: 1.2rem;
+      border-radius: 12px;
+      margin-top: 40px;
+      color: #3b2a18;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 40px auto 0;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: var(--accent1);
+      text-decoration: none;
+      font-weight: bold;
+      color: #fff;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .back-link:hover {
+      background: var(--accent2);
+      color: var(--text);
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #f0e2cf;
+      text-align: center;
+      padding: 25px;
+      font-weight: bold;
+      border-top: 3px solid var(--accent1);
+      color: var(--text);
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+  <div id="progress-bar"></div>
+  <header>
+    <div class="header-content">
+      <h1>Văn Chương Phản Ánh Lịch Sử</h1>
+      <p>Khám phá vai trò của văn chương trong việc soi chiếu những biến thiên của lịch sử dân tộc.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Vai trò phản ánh</h2>
+      <p>Văn chương đóng vai trò như một tấm gương nghệ thuật phản chiếu sinh động đời sống chính trị, xã hội của dân tộc qua từng thời kỳ, bổ sung cho những ghi chép khô khan của chính sử. Mỗi giai đoạn lịch sử, văn chương lại mang trong mình một sứ mệnh phản ánh và lưu giữ tâm hồn dân tộc.</p>
+    </section>
+
+    <div class="timeline">
+      <div class="event">
+        <h3>Văn học Trung đại (Trước 1945)</h3>
+        <p>Tập trung phản ánh ý chí độc lập và tinh thần yêu nước chống ngoại xâm qua các tác phẩm như <em>Hịch tướng sĩ</em>, <em>Bình Ngô đại cáo</em>. Đồng thời thể hiện mối quan tâm sâu sắc đến số phận con người trong xã hội phong kiến, đặc biệt là phụ nữ qua <em>Truyện Kiều</em>.</p>
+      </div>
+
+      <div class="event">
+        <h3>Văn học Cách mạng và Kháng chiến (1945–1975)</h3>
+        <p>Văn học giai đoạn này trở thành vũ khí tinh thần, ca ngợi chủ nghĩa anh hùng cách mạng và con người xã hội chủ nghĩa. Các tác phẩm mang âm hưởng sử thi, kết hợp tinh thần lạc quan và lòng tin vào tương lai dân tộc.</p>
+      </div>
+
+      <div class="event">
+        <h3>Văn học Đổi mới và Đương đại (Sau 1986)</h3>
+        <p>Phản ánh những vấn đề xã hội hậu chiến, công cuộc đổi mới, và sự va chạm giữa cá nhân với cộng đồng. Tác phẩm đi sâu khai thác nội tâm con người, nêu bật mâu thuẫn giữa truyền thống và hiện đại.</p>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <img src="https://metaisach.com/_ipx/_/https://media.metaisach.com/2025/03/hich-tuong-si-0c6a50cd.jpeg" alt="Hịch tướng sĩ" width="320" height="450"/>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRd7prZMELmtf2WSTeNy43kKUJL-OeYWEdoQ&s" alt="Tượng Nguyễn Trãi" width="320" height="450"/>
+      <img src="https://vcdn1-giaitri.vnecdn.net/2025/09/12/noi-buon-chien-tranh-175766711-1767-6546-1757668350.jpg?w=460&h=0&q=100&dpr=2&fit=crop&s=DwY6dTdLjQ5EQVJkWUjGjg" alt="Nguyễn Du" width="320" height="450"/>
+    </div>
+
+
+    <a href="Index.html" class="back-link">« Quay về trang chủ</a>
+  </main>
+
+  <footer>
+    © 2025 — VĂN CHƯƠNG: DÒNG CHẢY LỊCH SỬ
+  </footer>
+
+  <script>
+    const progressBar = document.getElementById('progress-bar');
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      progressBar.style.width = progress + '%';
+    });
+
+    const events = document.querySelectorAll('.event');
+    const revealOnScroll = () => {
+      const trigger = window.innerHeight * 0.85;
+      events.forEach(event => {
+        const top = event.getBoundingClientRect().top;
+        if(top < trigger) event.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+</body>
+</html>

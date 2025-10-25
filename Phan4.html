@@ -1,0 +1,250 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Văn Chương với Việc Bảo Tồn và Kiến Giải Lịch Sử — Văn Chương</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&display=swap');
+
+    :root {
+      --bg: #fffaf3;
+      --card: #fefcf8;
+      --accent1: #704214;
+      --accent2: #c19a6b;
+      --text: #2a2a2a;
+      --subtle: #3b3b3b;
+      --radius: 20px;
+      --shadow: 0 6px 25px rgba(0,0,0,0.15);
+      --maxw: 1150px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Merriweather', serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      animation: fadeBody 1.3s ease;
+    }
+
+    @keyframes fadeBody {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      position: relative;
+      height: 360px;
+      background: linear-gradient(rgba(255,255,255,0.4), rgba(255,255,255,0.9)), url('https://www.quanlynhanuoc.vn/wp-content/uploads/2021/04/ha_neu_tan_suu_2021.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      border-bottom: 4px solid var(--accent2);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--accent1);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      animation: zoomIn 1.5s ease;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: var(--subtle);
+      font-weight: 700;
+      margin-top: 10px;
+      opacity: 0;
+      animation: fadeInUp 2s ease forwards;
+      animation-delay: 0.8s;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 50px auto;
+      padding: 20px;
+    }
+
+    .section {
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .section:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+    }
+
+    h2 {
+      font-size: 1.9rem;
+      color: var(--accent1);
+      text-transform: uppercase;
+      margin-top: 0;
+      border-bottom: 2px solid var(--accent2);
+      padding-bottom: 8px;
+      font-weight: 900;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      color: var(--accent1);
+      margin-top: 25px;
+      font-weight: 800;
+    }
+
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--subtle);
+      font-weight: 600;
+    }
+
+    ul { margin: 12px 0 12px 25px; }
+    li { margin-bottom: 7px; }
+
+    .quote {
+      background: linear-gradient(90deg, rgba(193,154,107,0.15), rgba(193,154,107,0.3));
+      border-left: 5px solid var(--accent2);
+      padding: 16px 24px;
+      font-style: italic;
+      color: var(--text);
+      border-radius: 8px;
+      margin: 25px 0;
+      font-weight: 700;
+      transition: all 0.5s ease;
+    }
+    .quote:hover {
+      background: rgba(193,154,107,0.45);
+      transform: scale(1.02);
+    }
+
+    .image-float {
+      float: right;
+      width: 40%;
+      margin: 10px 0 20px 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      transition: transform 0.5s ease;
+    }
+    .image-float:hover { transform: scale(1.05); }
+
+    .highlight-box {
+      background: #f3e6d0;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+      font-weight: 700;
+      transition: background 0.3s ease;
+    }
+    .highlight-box:hover {
+      background: #f9e7c8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 28px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      background: var(--accent1);
+      text-decoration: none;
+      font-weight: 900;
+      color: #fff;
+      transition: all 0.3s ease;
+    }
+    .back-link:hover {
+      background: var(--accent2);
+      color: #1b1b1b;
+      transform: scale(1.07);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: #ede1d0;
+      color: var(--text);
+      font-size: 1rem;
+      margin-top: 50px;
+      font-weight: 800;
+      border-top: 3px solid var(--accent1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="title-box">
+      <h1>IV. Văn Chương với Việc Bảo Tồn và Kiến Giải Lịch Sử</h1>
+      <p>Nếu lịch sử chính thống ghi chép lại "bộ khung" của quá khứ, thì văn chương chính là yếu tố "tô màu, thổi hồn" để bức tranh ấy trở nên sống động, trọn vẹn và giàu sức ám ảnh.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2>1. Bảo tồn ký ức lịch sử</h2>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSaA7Q3rnFSNqvJM22nqN-33gODuYdhCRCotg&s" class="image-float" alt="Tắt đèn" />
+      <p>Văn chương hoạt động như một "bảo tàng sống" bằng ngôn từ, lưu giữ những gì mà các bảo tàng bằng hiện vật khó có thể chứa đựng được.</p>
+      <div class="highlight-box">
+        <ul>
+          <li><strong>Lưu giữ ký ức cộng đồng:</strong> Các tác phẩm văn học dân gian (truyền thuyết, ca dao, cổ tích) chính là phương tiện lưu truyền ký ức về cội nguồn, phong tục tập quán, đấu tranh sinh tồn của cả một dân tộc. Truyền thuyết về Lạc Long Quân - Âu Cơ không chỉ là một câu chuyện đẹp, mà còn là cách người Việt cổ lưu giữ và giải thích về nguồn gốc "con Rồng cháu Tiên" của mình.</li>
+          <li><strong>Bảo tồn hình ảnh thời đại:</strong> Các tác phẩm văn học hiện thực (như "Tắt đèn" của Ngô Tất Tố, "Số đỏ" của Vũ Trọng Phụng) đã khắc họa một cách chân thực và sống động bối cảnh xã hội Việt Nam nửa đầu thế kỷ XX, từ những hủ tục, sự áp bức của giai cấp thống trị đến cuộc sống cùng cực của người nông dân. Những "ký ức" này tồn tại bền vững trong văn chương hơn bất kỳ tài liệu lịch sử khô khan nào.</li>
+          <li><strong>Gìn giữ tâm tư, tình cảm thời đại:</strong> Văn chương lưu giữ lại những rung động tinh tế nhất của con người trước các biến cố. Thơ Hồ Xuân Hương là ký ức về sự phản kháng của người phụ nữ trong xã hội phong kiến. Thơ các tác giả Thơ Mới là ký ức về cái "tôi" cá nhân thức tỉnh giữa thời loạn lạc.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>2. Giải mã và Kiến giải lịch sử</h2>
+      <p>Đây là vai trò đặc biệt quan trọng, phân biệt văn chương với sử học.</p>
+      <div class="highlight-box">
+        <ul>
+          <li><strong>Khám phá góc khuất:</strong> Lịch sử thường ghi chép về những người chiến thắng, những anh hùng. Văn chương dám đi vào những bi kịch, mất mát, những số phận nhỏ bé bị lãng quên bên lề sự kiện. "Nỗi buồn chiến tranh" của Bảo Ninh không ca ngợi chiến thắng, mà đi sâu vào nỗi đau tinh thần, sự dằn vặt, day dứt của người lính sau chiến tranh - một góc khuất mà chính sử ít khi đề cập.</li>
+          <li><strong>Số phận cá nhân:</strong> Lịch sử nói về "cuộc chiến tranh", còn văn chương nói về "người lính". Lịch sử nói về "phong trào", còn văn chương nói về "con người" trong phong trào ấy. Nó đặt con người vào trung tâm, cho thấy lịch sử tác động lên từng cá nhân cụ thể như thế nào.</li>
+          <li><strong>Phân biệt Chính sử và Dã sử:</strong> 
+            <ul>
+              <li><strong>Chính sử:</strong> Như “Đại Việt Sử ký Toàn thư” chú trọng tính xác thực, khách quan.</li>
+              <li><strong>Dã sử – Văn học lịch sử:</strong> “Hoàng Lê nhất thống chí”, “Hồ Quý Ly” vừa tái hiện vừa kiến giải, cho ta một cái nhìn nhân văn và sáng tạo hơn.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. Giáo dục và Truyền cảm hứng</h2>
+      <img src="https://www.epochtimesviet.com/wp-content/uploads/2024/03/id5557124-Why-Literature-is-Crucial-for-a-Good-Education.jpg" height="380" class="image-float" alt="Sách lịch sử Việt Nam" />
+      <p>Văn chương có sức mạnh cảm hóa vô cùng to lớn, biến những bài học lịch sử thành những rung động tình cảm mãnh liệt.</p>
+      <ul>
+        <li><strong>Truyền cảm hứng yêu nước:</strong> “Hịch tướng sĩ” và “Tuyên ngôn Độc lập” là biểu tượng của tinh thần chiến đấu và lòng tự tôn dân tộc.</li>
+        <li><strong>Lòng tự hào dân tộc:</strong> “Đất nước đứng lên” và “Xứ Đoài mây trắng” ca ngợi tinh thần kháng chiến và bản lĩnh Việt Nam.</li>
+        <li><strong>Ý thức trách nhiệm:</strong> Văn chương giúp thế hệ sau nhận ra giá trị của hòa bình và nghĩa vụ bảo vệ Tổ quốc.</li>
+      </ul>
+    </section>
+
+    <a href="Index.html" class="back-link">« Quay về trang chủ</a>
+  </main>
+
+  <footer><strong>© 2025 — VĂN CHƯƠNG: DÒNG CHẢY LỊCH SỬ</strong></footer>
+</body>
+</html>

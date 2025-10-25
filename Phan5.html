@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>V. Kết Luận — Văn Chương và Lịch Sử</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Playfair+Display:wght@500;700&display=swap');
+
+    :root {
+      --bg: #fefaf5;
+      --card: #ffffff;
+      --accent1: #5b3413;
+      --accent2: #b99365;
+      --text: #2d2d2d;
+      --subtle: #4a4a4a;
+      --shadow: 0 8px 30px rgba(0,0,0,0.2);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      animation: fadeIn 1.5s ease;
+      overflow-x: hidden;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    header {
+      position: relative;
+      height: 400px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.95)), url('https://toplist.vn/images/800px/ket-bai-ap-dung-li-luan-van-hoc-so-2-946439.jpg') center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      color: var(--accent1);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: slideInDown 1.2s ease forwards;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: var(--subtle);
+      margin-top: 12px;
+      font-weight: 600;
+      opacity: 0;
+      animation: fadeInUp 1.8s ease forwards;
+      animation-delay: 0.6s;
+    }
+
+    @keyframes slideInDown {
+      from { transform: translateY(-40px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 60px auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    .content-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      flex-wrap: wrap;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 40px;
+      transform: translateY(40px);
+      opacity: 0;
+      animation: riseUp 1s ease forwards;
+    }
+
+    .content-section:nth-child(even) {
+      flex-direction: row-reverse;
+      background: #fcf7f0;
+    }
+
+    @keyframes riseUp {
+      from { opacity: 0; transform: translateY(60px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .text {
+      flex: 1;
+      font-size: 1.1rem;
+      line-height: 1.9;
+      color: var(--subtle);
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .text:hover { color: var(--accent1); }
+
+    .image {
+      flex: 0.9;
+      text-align: center;
+    }
+
+    .image img {
+      width: 100%;
+      max-width: 420px;
+      border-radius: 14px;
+      box-shadow: 0 5px 25px rgba(0,0,0,0.25);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .image img:hover {
+      transform: scale(1.07);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.35);
+    }
+
+    blockquote {
+      font-style: italic;
+      background: rgba(185,147,101,0.1);
+      border-left: 5px solid var(--accent2);
+      padding: 18px 25px;
+      border-radius: 10px;
+      margin: 25px 0;
+      color: var(--accent1);
+      font-weight: 700;
+    }
+
+    .highlight {
+      background: linear-gradient(90deg, #f4e3c4, #f9edd8);
+      padding: 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: inset 0 2px 6px rgba(0,0,0,0.05);
+      margin-top: 18px;
+      text-align: justify;
+      transition: transform 0.4s ease;
+    }
+
+    .highlight:hover { transform: scale(1.02); }
+
+    .back-link {
+      display: inline-block;
+      align-self: center;
+      padding: 14px 28px;
+      background: var(--accent1);
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: all 0.4s ease;
+      margin-top: 20px;
+    }
+
+    .back-link:hover {
+      background: var(--accent2);
+      color: #1b1b1b;
+      transform: scale(1.08);
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: #efe1cf;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 1rem;
+      border-top: 3px solid var(--accent1);
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>V. Kết Luận</h1>
+    <p>Văn chương và lịch sử – hai dòng chảy song hành, cùng lưu giữ linh hồn văn hóa nhân loại.</p>
+  </header>
+
+  <main>
+    <div class="content-section">
+      <div class="text">
+        <p>Văn chương và lịch sử tuy thuộc hai lĩnh vực khác nhau nhưng luôn gắn bó, song hành cùng nhau qua mọi thời đại. Lịch sử ghi lại những sự kiện, biến cố, thăng trầm của dân tộc và thời đại; còn văn chương là tiếng nói, cảm xúc và tâm hồn con người trong dòng chảy ấy. Mỗi tác phẩm văn học, dù ở thể loại nào, đều phản chiếu dấu ấn của lịch sử, xã hội và con người qua từng giai đoạn.</p>
+        <blockquote>“Nhà văn là người thư ký trung thành nhất của mọi thời đại.” – Balzac</blockquote>
+        <p>Như Balzac từng viết: “Nhà văn là người thư ký trung thành nhất của mọi thời đại.” Văn chương là phương tiện tái hiện lịch sử sinh động và nhân văn hơn chính sử khô khan. Qua ngòi bút sáng tạo và cảm xúc, người nghệ sĩ không chỉ kể lại quá khứ mà còn “làm sống dậy” con người trong quá khứ với những suy nghĩ, hi sinh và khát vọng. Nhờ họ, lịch sử đến gần hơn với người đọc, khơi dậy sự thấu hiểu và biết ơn với những hi sinh của cha ông, để từ đó con người trân trọng hiện tại và hướng tới tương lai. Đó là sứ mệnh của văn chương đối với lịch sử.</p>
+      </div>
+      <div class="image">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E6%89%8E%E5%85%8B.png/960px-%E5%A5%A5%C2%B7%E5%B7%B4%E5%B0%94%E6%89%8E%E5%85%8B.png" alt="Sách cũ" />
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="text">
+        <p>Các tác phẩm như Bình Ngô đại cáo (Nguyễn Trãi), Truyện Kiều (Nguyễn Du), Vợ nhặt (Kim Lân), Dế Mèn phiêu lưu ký (Tô Hoài), Những đứa con trong gia đình (Nguyễn Thi)… tuy thuộc nhiều thể loại và giai đoạn khác nhau, nhưng đều phản ánh sâu sắc dấu ấn thời đại và bức tranh xã hội Việt Nam qua từng thời kỳ. Văn chương không chỉ ca ngợi vẻ đẹp cuộc sống, mà còn phản ánh bi kịch, nỗi đau và bất công, giúp thế hệ sau hiểu và trân trọng những gian khổ của cha ông, lấy đó làm động lực hướng tới một xã hội tốt đẹp, văn minh hơn.</p>
+        <div class="highlight">Văn chương không chỉ ghi chép lịch sử, mà còn “giải mã” nó – nhìn thấy trong từng biến cố là nỗi đau, là hi vọng, là linh hồn của con người.</div>
+      </div>
+      <div class="image">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNAZUo240kCTK9vrdcXiR9s6S2qVFj9ftW0A&s" alt="Truyện Kiều" />
+      </div>
+    </div>
+
+    <div class="content-section">
+      <div class="text">
+        <p>Không có lịch sử, văn chương sẽ mất đi chất liệu sống; không có văn chương, lịch sử sẽ khô khan và thiếu sức lay động. Cả hai cùng tồn tại, bù đắp, soi sáng và tôn vinh lẫn nhau.</p>
+        <p>Chúng chính là hai mạch nguồn tạo nên diện mạo tinh thần của thời đại – nơi con người tìm thấy bản sắc, cội nguồn và niềm tin hướng tới tương lai.</p>
+      </div>
+      <div class="image">
+        <img src="https://i.postimg.cc/5yk0Tp9b/9780bffc-05dd-4962-ab79-f07dd376754d.png" alt="Sách cổ" />
+      </div>
+    </div>
+
+    <a href="Index.html" class="back-link">« Quay về trang chủ</a>
+  </main>
+
+  <footer><strong>© 2025 — VĂN CHƯƠNG: DÒNG CHẢY LỊCH SỬ</strong></footer>
+</body>
+</html>
