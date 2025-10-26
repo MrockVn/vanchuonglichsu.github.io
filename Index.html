@@ -5,144 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Văn Chương - Dòng Chảy Lịch Sử</title>
     <style>
+        :root{
+            --bg:#faf8f5;
+            --card:#ffffff;
+            --muted:#f4efe8;
+            --accent:#b69a8b;
+            --text:#2f2f2f;
+        }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--bg);
+            color: var(--text);
         }
-        /* Hiệu ứng mở đầu */
+        /* Hoạt ảnh mở đầu */
         #intro-screen {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            position: fixed; top:0; left:0; right:0; bottom:0;
             background-color: #f4f1ea;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Garamond', serif;
-            font-size: 1.8em;
-            text-align: center;
-            transition: opacity 1s ease;
-            z-index: 10;
+            display:flex;align-items:center;justify-content:center;flex-direction:column;
+            font-family: 'Garamond', serif; font-size:1.8em; text-align:center; z-index:10;
+            transition: opacity .9s ease;
         }
-        #intro-screen.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #intro-text p {
-            opacity: 0;
-            animation: fadeIn 1.5s forwards;
-        }
-        #intro-text p:nth-child(1) { animation-delay: 0.5s; }
-        #intro-text p:nth-child(2) { animation-delay: 2s; }
-        #intro-text p:nth-child(3) { animation-delay: 3.5s; }
-        #intro-text p:nth-child(4) { animation-delay: 5s; }
-        #continue-message {
-            margin-top: 20px;
-            font-size: 0.8em;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-            animation-delay: 7s;
-        }
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
+        #intro-text p{opacity:0; animation:fadeIn 1.5s forwards}
+        #intro-text p:nth-child(1){animation-delay:0.6s}
+        #intro-text p:nth-child(2){animation-delay:2s}
+        #intro-text p:nth-child(3){animation-delay:3.6s}
+        #intro-text p:nth-child(4){animation-delay:5s}
+        #continue-message{opacity:0; animation:fadeIn 2s forwards; animation-delay:7s; font-size:.9em}
+        @keyframes fadeIn{to{opacity:1}}
+        #intro-screen.fade-out{opacity:0;pointer-events:none}
 
         /* Đầu trang */
-        header {
-            position: relative;
-            background: url('https://cdn.wallpapersafari.com/31/99/IqtX9C.jpg') no-repeat center/cover;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: #fff;
-            font-family: 'Garamond', serif;
+        header{
+            position:relative; height:300px; display:flex;align-items:center;justify-content:center;text-align:center;
+            background: url('https://cdn.wallpapersafari.com/31/99/IqtX9C.jpg') center/cover no-repeat;
+            color:#fff; font-family:'Garamond', serif;
         }
-        header::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.4);
+        header::after{content:' ';position:absolute;inset:0;background:rgba(0,0,0,0.45)}
+        header .header-content{position:relative;z-index:2}
+        header h1{font-size:2.8rem;letter-spacing:2px;margin:0}
+        header p{margin-top:10px;font-size:1.05rem}
+
+        /* Lưới phần mục lớn (3 trên, 2 dưới) */
+        main{padding:40px 6%; display:flex;flex-direction:column;gap:28px}
+        .grid-top{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+        .grid-bottom{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+
+        /* Khung nền mục lớn */
+        .section-box{
+            position:relative; height:260px; border-radius:14px; overflow:hidden;
+            background: linear-gradient(135deg, rgba(255,255,255,0.6), rgba(250,247,243,0.6)), url('https://upload.wikimedia.org/wikipedia/commons/4/4d/Ancient_scroll_texture.jpg') center/cover;
+            display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 8px 20px rgba(31,28,25,0.08);
+            transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s;
         }
-        header h1 {
-            position: relative;
-            font-size: 3em;
-            z-index: 2;
-            letter-spacing: 2px;
-        }
-        header p {
-            position: relative;
-            font-size: 1.2em;
-            z-index: 2;
-            margin-top: 10px;
+        .section-box:hover{transform:translateY(-8px);box-shadow:0 18px 38px rgba(31,28,25,0.12)}
+
+        /* Tiêu đề lớn chìm trong nền */
+        .section-title-large{
+            position:absolute; inset:0; display:flex;align-items:center;justify-content:center;opacity:.12;
+            font-size:3.2rem; font-weight:700; font-family:'Garamond',serif; letter-spacing:4px; pointer-events:none;
+            text-transform:uppercase;
         }
 
-        /* Nội dung chính */
-        main {
-            padding: 40px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .section-box {
-            position: relative;
-            width: 30%;
-            height: 250px;
-            background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), url('https://upload.wikimedia.org/wikipedia/commons/4/4d/Ancient_scroll_texture.jpg') center/cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            font-size: 1.3em;
-            font-weight: bold;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .section-box:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        .section-label{
+            position:relative; z-index:3; font-size:1.15rem; font-weight:700; color:var(--text); padding:12px 20px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6)); border-radius:8px;
+            backdrop-filter: blur(3px);
         }
 
-        /* Credit */
-        footer {
-            background-color: #f1f0ec;
-            padding: 40px 20px;
-            text-align: center;
+        .wipe-layer{
+            position:absolute; left:0; top:0; bottom:0; width:0%; z-index:2; transform-origin:left;
+            background: linear-gradient(90deg, rgba(182,154,139,0.95), rgba(197,166,150,0.95));
+            transition: width .6s cubic-bezier(.2,.9,.2,1), background .6s;
+            mix-blend-mode: multiply;
         }
-        .credit-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            justify-items: center;
+        .section-box.active .wipe-layer{width:100%}
+        .section-box.active .section-label{color:#fff}
+        .section-box.active .section-title-large{opacity:.22;color:rgba(255,255,255,0.9)}
+
+        /* Footer credit dạng khung vuông, viền tròn */
+        footer{
+            background:var(--muted);
+            padding:60px 10%;
+            text-align:center;
         }
-        .credit-box {
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            padding: 15px;
-            width: 200px;
+        .credit-grid{
+            display:grid;
+            grid-template-columns:repeat(3,1fr);
+            gap:40px;
+            justify-items:center;
+            margin:auto;
+            max-width:1000px;
         }
-        .credit-box img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 10px;
+        .credit-item{
+            background:var(--card);
+            border-radius:20px;
+            overflow:hidden;
+            width:220px;
+            box-shadow:0 8px 20px rgba(31,28,25,0.1);
+            transition:transform .3s ease, box-shadow .3s ease;
         }
-        .credit-box h4 {
-            margin: 10px 0 5px;
-            font-size: 1.1em;
+        .credit-item:hover{
+            transform:translateY(-8px);
+            box-shadow:0 14px 30px rgba(31,28,25,0.15);
         }
-        .credit-box p {
-            margin: 0;
-            font-size: 0.9em;
-            color: #555;
+        .credit-item img{
+            width:100%;
+            height:200px;
+            object-fit:cover;
+            border-bottom:4px solid var(--accent);
         }
+        .credit-meta{
+            padding:15px;
+        }
+        .credit-meta h4{
+            margin:8px 0 5px;
+            font-size:1.1rem;
+            color:var(--text);
+        }
+        .credit-meta p{
+            margin:0;
+            font-size:0.9rem;
+            color:#666;
+        }
+
     </style>
 </head>
 <body>
@@ -157,63 +143,90 @@
     </div>
 
     <header>
-        <div>
+        <div class="header-content">
             <h1>VĂN CHƯƠNG - DÒNG CHẢY LỊCH SỬ</h1>
             <p>Hành trình của ngôn từ qua thời gian và tâm hồn dân tộc</p>
         </div>
     </header>
 
     <main>
-        <div class="section-box"><a href="Phan1.html">Khái quát chung</a></div>
-        <div class="section-box"><a href="Phan2.html">Văn chương phản ánh lịch sử (Vai trò phản ánh)</a></div>
-        <div class="section-box"><a href="Phan3.html">Lịch sử tác động đến văn chương (Vai trò kiến tạo)</a></div>
-        <div class="section-box"><a href="Phan4.html">Văn chương với việc bảo tồn và kiến giải lịch sử</a></div>
-        <div class="section-box"><a href="Phan5.html">Kết luận</a></div>
+        <div class="grid-top">
+            <div class="section-box" data-title="Nguồn Gốc">
+                <div class="wipe-layer"></div>
+                <div class="section-title-large">KHÁI QUÁT</div>
+                <div class="section-label"><a href="Phan1.html">Khái quát chung</a></div>
+            </div>
+            <div class="section-box" data-title="Phát Triển">
+                <div class="wipe-layer"></div>
+                <div class="section-title-large">VAI TRÒ</div>
+                <div class="section-label"><a href="Phan2.html">Văn chương phản ánh lịch sử</a></div>
+            </div>
+            <div class="section-box" data-title="Tác Phẩm">
+                <div class="wipe-layer"></div>
+                <div class="section-title-large">KIẾN TẠO</div>
+                <div class="section-label"><a href="Phan3.html">Lịch sử tác động đến văn chương</a></div>
+            </div>
+        </div>
+        <div class="grid-bottom">
+            <div class="section-box" data-title="Ảnh Hưởng">
+                <div class="wipe-layer"></div>
+                <div class="section-title-large">BẢO TỒN</div>
+                <div class="section-label"><a href="Phan4.html">Văn chương với việc bảo tồn và kiến giải lịch sử</a></div>
+            </div>
+            <div class="section-box" data-title="Tương Lai">
+                <div class="wipe-layer"></div>
+                <div class="section-title-large">KẾT LUẬN</div>
+                <div class="section-label"><a href="Phan5.html">Kết luận</a></div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <h2>Thành viên tham gia</h2>
-        <div class="credit-container">
-            <div class="credit-box">
-                <img src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-1/548458577_802978452282328_618399175408441588_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dMTCJ3q5qZAQ7kNvwEYpzoT&_nc_oc=Adn_TOfuXmu-p2sWnQDO5bW7ltRDjLzgtIO6lHUFItUYvGWPzed9twu7rZMfzFx_RbVgLlgctfgb7ODpAy7jJvg5&_nc_zt=24&_nc_ht=scontent.fdad2-1.fna&_nc_gid=A0fqrFYVAdQDZnTvOL5MGQ&oh=00_Aff6GHYS3zBlzYa71_xOwAnp86JpJZDjHaTCvvxtuYx4bA&oe=68FEE0EE" alt="Thành viên 1">
-                <h4>Trần Văn Thịnh</h4>
-                <p>Lên ý tưởng; Soạn nội dung</p>
-            </div>
-            <div class="credit-box">
-                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-1/278387356_1324272338095627_3870600497630618091_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=EUcoy9iQwtEQ7kNvwF8bYfc&_nc_oc=Adn8ECQFTS2rCQq_BpjXW2lwYWYwgukfRwPPyLz1gHUEbIa1GwTaLCP5nJKeshOIX-J8U9TdhusScB9hs7Zng1w3&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&_nc_gid=YZAwp0J15l1B_3nMwUrsqQ&oh=00_AfdbT3CWE_Ha6raqQz8Yh0l-KvicWcqISAhaDN7boYILCQ&oe=68FEB7B8" alt="Thành viên 2">
-                <h4>Lê Thảo Ngân</h4>
-                <p>Soạn nội dung</p>
-            </div>
-            <div class="credit-box">
-                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-1/545417782_1380408886773510_2877253959440489787_n.jpg?stp=cp6_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=hDrgQBlCN5YQ7kNvwEJF2fs&_nc_oc=AdkQIjLbm7WUG3jHEp749SpY4rhwvtZAmGZyI_e70oQgwyZmlI4tARvIx2C8i4HX8BJ1lhVqwCcL8Nu8sWYZw0Rj&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&_nc_gid=V0AlHhq2KL96WyE2AaFmqw&oh=00_AffUj-RqUwVUVYDXVa2LHzX5zvxoIzNvSk1NNrXscBZNKw&oe=68FED58C" alt="Thành viên 3">
-                <h4>Trần Thị Duyên</h4>
-                <p>Soạn nội dung</p>
-            </div>
-            <div class="credit-box">
-                <img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t1.30497-1/453178253_471506465671661_2781666950760530985_n.png?stp=dst-png_s200x200&_nc_cat=1&ccb=1-7&_nc_sid=136b72&_nc_ohc=D3fOwr6x0ZcQ7kNvwGfjsyh&_nc_oc=AdkeRXRg6YXznzimp7mO9ILUrfyt1-sSBhq2W4pmfBllekZ-UjRBb5xv7pDEPshGkaTTw8dgnBDVad-uDKyiOKD1&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&oh=00_Aff2I8XwfeDmOA9nLFldEJ4lF_L8XDirNRo5KqZgKPg_Ag&oe=692060FA" alt="Thành viên 4">
-                <h4>Lê Trần Khánh Nguyên</h4>
-                <p>Minh họa hình ảnh</p>
-            </div>
-            <div class="credit-box">
-                <img src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-1/300066759_179770711183115_2183189965384215109_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=102&ccb=1-7&_nc_sid=e99d92&_nc_ohc=sASULa6zPNQQ7kNvwHeGur9&_nc_oc=AdksFAmTJ_bAT-suDlZqskpp2X5sX9JVzcqyJULNal8zxcw9GjOevuefcrK7BjcmKnBTJdsJDyh5AfD6p_I_hA_J&_nc_zt=24&_nc_ht=scontent.fdad1-2.fna&_nc_gid=TBk93XMjYepvzuT-rz57Qw&oh=00_Afe8C6Ao_TC9slx3rbnIpXueBLZFVyI5z-WnzfrcAz-w_g&oe=68FEBE31" alt="Thành viên 5">
-                <h4>Đoàn Thành Nhân</h4>
-                <p>Minh họa hình ảnh</p>
-            </div>
-            <div class="credit-box">
-                <img src="https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/332465488_751304016226569_2668177914036640423_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=104&ccb=1-7&_nc_sid=e99d92&_nc_ohc=G7ZbI7GstAwQ7kNvwE0_kc6&_nc_oc=AdmvYpf9wMP0NBSNXScMGuqJ8wFYU9J4MmsJ-KTEC4TuP0ukoMjAUr1lVjZvgBt2HGpQN2GxHENRIY5_XFlvMoaz&_nc_zt=24&_nc_ht=scontent.fdad1-1.fna&_nc_gid=0RvoAcuZYibY4YZ7p6vQYw&oh=00_Afc_dzt_UqGr-W7Z3GGtWm3KLDBndVJm29AGdW0a95Qe_g&oe=68FED75A" alt="Thành viên 6">
-                <h4>Lê Chí Vỹ</h4>
-                <p>Thiết kế trang Web</p>
-            </div>
+        <div class="credit-grid">
+            <div class="credit-item"><img src="https://scontent.fdad2-1.fna.fbcdn.net/v/t39.30808-1/548458577_802978452282328_618399175408441588_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=108&ccb=1-7&_nc_sid=e99d92&_nc_ohc=dMTCJ3q5qZAQ7kNvwEYpzoT&_nc_oc=Adn_TOfuXmu-p2sWnQDO5bW7ltRDjLzgtIO6lHUFItUYvGWPzed9twu7rZMfzFx_RbVgLlgctfgb7ODpAy7jJvg5&_nc_zt=24&_nc_ht=scontent.fdad2-1.fna&_nc_gid=A0fqrFYVAdQDZnTvOL5MGQ&oh=00_Aff6GHYS3zBlzYa71_xOwAnp86JpJZDjHaTCvvxtuYx4bA&oe=68FEE0EE"><div class="credit-meta"><h4>Trần Văn Thịnh</h4><p>Lên ý tưởng; Soạn nội dung</p></div></div>
+            <div class="credit-item"><img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-1/278387356_1324272338095627_3870600497630618091_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=EUcoy9iQwtEQ7kNvwF8bYfc&_nc_oc=Adn8ECQFTS2rCQq_BpjXW2lwYWYwgukfRwPPyLz1gHUEbIa1GwTaLCP5nJKeshOIX-J8U9TdhusScB9hs7Zng1w3&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&_nc_gid=YZAwp0J15l1B_3nMwUrsqQ&oh=00_AfdbT3CWE_Ha6raqQz8Yh0l-KvicWcqISAhaDN7boYILCQ&oe=68FEB7B8"><div class="credit-meta"><h4>Lê Thảo Ngân</h4><p>Soạn nội dung</p></div></div>
+            <div class="credit-item"><img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t39.30808-1/545417782_1380408886773510_2877253959440489787_n.jpg?stp=cp6_dst-jpg_s200x200_tt6&_nc_cat=103&ccb=1-7&_nc_sid=e99d92&_nc_ohc=hDrgQBlCN5YQ7kNvwEJF2fs&_nc_oc=AdkQIjLbm7WUG3jHEp749SpY4rhwvtZAmGZyI_e70oQgwyZmlI4tARvIx2C8i4HX8BJ1lhVqwCcL8Nu8sWYZw0Rj&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&_nc_gid=V0AlHhq2KL96WyE2AaFmqw&oh=00_AffUj-RqUwVUVYDXVa2LHzX5zvxoIzNvSk1NNrXscBZNKw&oe=68FED58C"><div class="credit-meta"><h4>Trần Thị Duyên</h4><p>Soạn nội dung</p></div></div>
+        </div>
+        <div style="height:30px"></div>
+        <div class="credit-grid">
+            <div class="credit-item"><img src="https://scontent.fdad1-4.fna.fbcdn.net/v/t1.30497-1/453178253_471506465671661_2781666950760530985_n.png?stp=dst-png_s200x200&_nc_cat=1&ccb=1-7&_nc_sid=136b72&_nc_ohc=D3fOwr6x0ZcQ7kNvwGfjsyh&_nc_oc=AdkeRXRg6YXznzimp7mO9ILUrfyt1-sSBhq2W4pmfBllekZ-UjRBb5xv7pDEPshGkaTTw8dgnBDVad-uDKyiOKD1&_nc_zt=24&_nc_ht=scontent.fdad1-4.fna&oh=00_Aff2I8XwfeDmOA9nLFldEJ4lF_L8XDirNRo5KqZgKPg_Ag&oe=692060FA"><div class="credit-meta"><h4>Lê Trần Khánh Nguyên</h4><p>Minh họa hình ảnh</p></div></div>
+            <div class="credit-item"><img src="https://scontent.fdad1-2.fna.fbcdn.net/v/t39.30808-1/300066759_179770711183115_2183189965384215109_n.jpg?stp=dst-jpg_s100x100_tt6&_nc_cat=102&ccb=1-7&_nc_sid=e99d92&_nc_ohc=sASULa6zPNQQ7kNvwHeGur9&_nc_oc=AdksFAmTJ_bAT-suDlZqskpp2X5sX9JVzcqyJULNal8zxcw9GjOevuefcrK7BjcmKnBTJdsJDyh5AfD6p_I_hA_J&_nc_zt=24&_nc_ht=scontent.fdad1-2.fna&_nc_gid=TBk93XMjYepvzuT-rz57Qw&oh=00_Afe8C6Ao_TC9slx3rbnIpXueBLZFVyI5z-WnzfrcAz-w_g&oe=68FEBE31"><div class="credit-meta"><h4>Đoàn Thành Nhân</h4><p>Minh họa hình ảnh</p></div></div>
+            <div class="credit-item"><img src="https://scontent.fdad1-1.fna.fbcdn.net/v/t39.30808-1/332465488_751304016226569_2668177914036640423_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=104&ccb=1-7&_nc_sid=e99d92&_nc_ohc=G7ZbI7GstAwQ7kNvwE0_kc6&_nc_oc=AdmvYpf9wMP0NBSNXScMGuqJ8wFYU9J4MmsJ-KTEC4TuP0ukoMjAUr1lVjZvgBt2HGpQN2GxHENRIY5_XFlvMoaz&_nc_zt=24&_nc_ht=scontent.fdad1-1.fna&_nc_gid=0RvoAcuZYibY4YZ7p6vQYw&oh=00_Afc_dzt_UqGr-W7Z3GGtWm3KLDBndVJm29AGdW0a95Qe_g&oe=68FED75A"><h4>Lê Chí Vỹ</h4><p>Thiết kế trang Web</p></div></div>
         </div>
     </footer>
 
-    <script>
-        function enterSite() {
-            document.getElementById('intro-screen').classList.add('fade-out');
-            setTimeout(() => {
-                document.getElementById('intro-screen').style.display = 'none';
-            }, 1000);
-        }
-    </script>
+<script>
+    function enterSite(){
+        const intro = document.getElementById('intro-screen');
+        intro.classList.add('fade-out');
+        setTimeout(()=>intro.style.display='none',900);
+    }
+    document.querySelectorAll('.section-box').forEach(box =>{
+        const wipe = box.querySelector('.wipe-layer');
+        box.addEventListener('mouseenter', ()=>{
+            box.classList.add('active');
+            const t = box.getAttribute('data-title') || '';
+            let grad;
+            switch(t.toLowerCase()){
+                case 'nguồn gốc': grad='linear-gradient(90deg,#c9a28b,#b8826a)'; break;
+                case 'phát triển': grad='linear-gradient(90deg,#9fb6a8,#6fa78f)'; break;
+                case 'tác phẩm': grad='linear-gradient(90deg,#b69ab8,#8f6aa2)'; break;
+                case 'ảnh hưởng': grad='linear-gradient(90deg,#f0b27a,#e07b39)'; break;
+                case 'tương lai': grad='linear-gradient(90deg,#7fb3d5,#4a90c2)'; break;
+                default: grad='linear-gradient(90deg,#b69a8b,#a57f68)';
+            }
+            wipe.style.background = grad;
+            wipe.style.width='100%';
+            const label = box.querySelector('.section-label');
+            label.style.color='#fff';
+        });
+        box.addEventListener('mouseleave', ()=>{
+            wipe.style.width='0%';
+            box.classList.remove('active');
+            const label = box.querySelector('.section-label');
+            setTimeout(()=>{ label.style.color='var(--text)'; }, 300);
+        });
+    });
+</script>
 </body>
 </html>
